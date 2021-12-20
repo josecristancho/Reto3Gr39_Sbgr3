@@ -10,7 +10,7 @@
     <GridView
         android:id="@+id/gridProductos"
         android:layout_width="match_parent"
-        android:layout_height="631dp"
+        android:layout_height="match_parent"
         android:numColumns="1" />
 
 </LinearLayout>

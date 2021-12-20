@@ -98,7 +98,7 @@ public class FormActivity extends AppCompatActivity {
                     llenarCampos();
                     dbHelper.insertData(campo1Insert, campo2Insert, campo3Insert, imageInsert, name);
                     limpiarCampos();
-                    Toast.makeText(getApplicationContext(), "Insert Success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "INSERTADO CON ÉXITO", Toast.LENGTH_SHORT).show();
                 }catch (Exception e){
                     Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
                 }
@@ -124,13 +124,15 @@ public class FormActivity extends AppCompatActivity {
                 View view = findViewById(R.id.linearLayoutForm);
                 dbHelper.deleteDataById(name,editId.getText().toString().trim());
                 limpiarCampos();
-                Snackbar.make(view, "Eliminado", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(view, "ELIMINADO CON ÉXITO", Snackbar.LENGTH_SHORT).show();
             }
         });
         btnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                View view = findViewById(R.id.linearLayoutForm);
                 llenarCampos();
+                Snackbar.make(view, "ACTUALIZADO con ÉXITO", Snackbar.LENGTH_SHORT).show();
                 try{
                     dbHelper.updateProductoById(
                             name,
@@ -167,7 +169,7 @@ public class FormActivity extends AppCompatActivity {
         campo1.setText("");
         campo2.setText("");
         campo3.setText("");
-        imgSelected.setImageResource(R.mipmap.ic_launcher);
+        imgSelected.setImageResource(R.drawable.sinimagen);
     }
 
     @Override

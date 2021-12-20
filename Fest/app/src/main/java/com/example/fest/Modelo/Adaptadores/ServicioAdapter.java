@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fest.Modelo.Entidades.Servicios;
 import com.example.fest.R;
@@ -54,6 +56,8 @@ public class ServicioAdapter extends BaseAdapter {
         TextView campo2 = convertView.findViewById(R.id.tvCampo2);
         TextView campo3 = convertView.findViewById(R.id.tvCampo3);
         TextView campoId = convertView.findViewById(R.id.tvId);
+        CheckBox boton1 = (CheckBox) convertView.findViewById(R.id.boton1_item);
+        ImageView imageFavorite = convertView.findViewById(R.id.imgFavorite);
 
         Servicios servicio = servicios.get(position);
         byte[] image = servicio.getImage();
@@ -65,6 +69,22 @@ public class ServicioAdapter extends BaseAdapter {
         campo2.setText(servicio.getDescription());
         campo3.setText(servicio.getPrice());
         imageView.setImageBitmap(bitmap);
+
+        boton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //dbHelper.insertData(producto.getName(), producto.getDescription(), producto.getPrice(), producto.getImage(), "FAVORITOS");
+                if(boton1.isChecked()){
+                    imageFavorite.setImageResource(R.drawable.ic_baseline_favorite_24);
+                    Toast.makeText(context, "GUARDADO EN FAVORITOS", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(context, "ELIMINADO DE FAVORITOS", Toast.LENGTH_SHORT).show();
+                    imageFavorite.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                }
+            }
+        });
 
         return convertView;
     }
